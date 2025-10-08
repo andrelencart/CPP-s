@@ -1,11 +1,11 @@
 #include <iostream>
-#include "contacts.hpp"
+#include "../contacts.hpp"
 
 Contact::Contact(void){
 }
 
 Contact::~Contact(void){
-	std::cout << "This Conctact has been DELETED!!" << std::endl;
+	std::cout << "This Contact has been DELETED!!" << std::endl;
 }
 
 // The Functions that will receive the info

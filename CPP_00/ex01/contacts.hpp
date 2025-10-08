@@ -2,6 +2,8 @@
 #ifndef CONTACT_H
 # define CONTACT_H
 
+#include <string>
+
 class Contact {
 
 	public:
@@ -14,11 +16,11 @@ class Contact {
 	void	SetPhNumber(const std::string &str);
 	void	SetDkSecret(const std::string &str);
 	
-	std::string GetFstName();
-	std::string GetLstName();
-	std::string GetNkName();
-	std::string GetPhNumber();
-	std::string GetDkSecret();
+	std::string GetFstName(void);
+	std::string GetLstName(void);
+	std::string GetNkName(void);
+	std::string GetPhNumber(void);
+	std::string GetDkSecret(void);
 
 	private:
 	std::string	f_name;
