@@ -34,7 +34,7 @@ void	PhoneBook::AddContact(void){
 	std::cout << "Phone Number:";
 	std::cin >> value;
 	this->contact[this->contact_index].SetPhNumber(value);
-	std::cout << "Darkest Sectret:";
+	std::cout << "Darkest Secret:";
 	std::cin >> value;
 	this->contact[this->contact_index].SetDkSecret(value);
 	this->contact_index++;
