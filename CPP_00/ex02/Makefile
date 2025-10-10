@@ -3,12 +3,12 @@ NAME=Account
 CPP=c++
 CPPF= -Wall -Wextra -Werror -g -std=c++98
 OBJ_DIR= Obj
-SRC_DIR= Src
+# SRC_DIR= Src
 
-SRC_FILES= tests.cpp Account.cpp
+SRC_FILES= Account.cpp tests.cpp
 
 OBJ= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.cpp=.o))
-SRC= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+# SRC= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 all: $(NAME)
 
@@ -18,7 +18,7 @@ $(OBJ_DIR):
 $(NAME): $(OBJ)
 	$(CPP) $(CPPF) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	$(CPP) $(CPPF) -c $< -o $@
 
 clean:
