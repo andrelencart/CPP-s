@@ -58,21 +58,21 @@ void	PrintColum(std::string text, int width){
 		std::cout << std::setw(width) << text << "|";
 }
 
-void	PrintUnderline(const std::vector<int> widths){
-	// std::cout << "|";
-	for (size_t j = 0; j < widths.size(); ++j){
-		int	w = widths[j];
-		for (int i = 0; i < w; ++i){
-			std::cout << "-";
-		}
-		std::cout << "|";
-	}
-	std::cout << std::endl;
-}
+// void	PrintUnderline(const std::vector<int> widths){
+// 	// std::cout << "|";
+// 	for (size_t j = 0; j < widths.size(); ++j){
+// 		int	w = widths[j];
+// 		for (int i = 0; i < w; ++i){
+// 			std::cout << "-";
+// 		}
+// 		std::cout << "|";
+// 	}
+// 	std::cout << std::endl;
+// }
 
 void	PhoneBook::SearchContact(void){
 	std::string input;
-	std::vector<int> widths (4, 10);
+	// std::vector<int> widths (4, 10);
 	
 	std::cout << "|";
 	PrintColum("Index", 10);
@@ -81,8 +81,8 @@ void	PhoneBook::SearchContact(void){
 	PrintColum("Nick Name", 10);
 	std::cout << std::endl;
 	
-	std::cout << "|";
-	PrintUnderline(widths);
+	// std::cout << "|";
+	// PrintUnderline(widths);
 	for (int i = 0; i < this->max_index; ++i){
 		std::stringstream ss;
 		ss << i;
