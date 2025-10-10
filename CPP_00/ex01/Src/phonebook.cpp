@@ -16,27 +16,54 @@ PhoneBook::~PhoneBook(void){
 }
 
 
+void	ParseInput(std::string &input, std::string ColumName){
+
+	while (true){
+		std::getline(std::cin, input);
+		if (input.find('\t') != std::string::npos){
+			std::cout << "Pleased no Tabs" << std::endl;
+			std::cout << ColumName;
+			continue ;
+		}
+		if (ColumName == "Phone Number:"){
+			bool isNumeric = true;
+			for (size_t i = 0; i < input.length(); ++i) {
+				if (!isdigit(input[i])) {
+					isNumeric = false;
+					break;
+				}
+			}
+			if (!isNumeric) {
+				std::cout << "Number!!" << std::endl;
+				std::cout << ColumName;
+				continue;
+			}
+		}
+		break ;
+	}
+}
+
 void	PhoneBook::AddContact(void){
-	std::string value;
+	std::string input;
 
 	if (this->contact_index == 8)
 		this->contact_index = 0;
 
-	std::cout << "First Name:";
-	std::cin >> value;
-	this->contact[this->contact_index].SetFstName(value);
-	std::cout << "Last Name:";
-	std::cin >> value;
-	this->contact[this->contact_index].SetLstName(value);
-	std::cout << "Nick Name:";
-	std::cin >> value;
-	this->contact[this->contact_index].SetNkName(value);
-	std::cout << "Phone Number:";
-	std::cin >> value;
-	this->contact[this->contact_index].SetPhNumber(value);
-	std::cout << "Darkest Secret:";
-	std::cin >> value;
-	this->contact[this->contact_index].SetDkSecret(value);
+	std::cout << "First Name: ";
+	ParseInput(input, "First Name:");
+	this->contact[this->contact_index].SetFstName(input);
+	std::cout << "Last Name: ";
+	ParseInput(input, "Last Name:");
+	this->contact[this->contact_index].SetLstName(input);
+	std::cout << "Nick Name: ";
+	ParseInput(input, "Nick Name:");
+	this->contact[this->contact_index].SetNkName(input);
+	std::cout << "Phone Number: ";
+	ParseInput(input, "Phone Number:");
+	this->contact[this->contact_index].SetPhNumber(input);
+	std::cout << "Darkest Secret: ";
+	ParseInput(input, "Darkest Secret:");
+	this->contact[this->contact_index].SetDkSecret(input);
 	this->contact_index++;
 	if (this->max_index != 8)
 		this->max_index++;
@@ -95,7 +122,7 @@ void	PhoneBook::SearchContact(void){
 	}
 	
 	std::cout << "Insert Contact Index" << std::endl;
-	std::cin >> input;
+	std::getline(std::cin, input);
 	if (input.size() != 1 || !isdigit(input[0])){
 		std::cout << "Invalid Index!" << std::endl;
 		return ;
@@ -112,3 +139,4 @@ void	PhoneBook::SearchContact(void){
 void	PhoneBook::Exit(void){
 	exit(0);
 }
+	
