@@ -135,7 +135,7 @@ void	PhoneBook::SearchContact(void){
 	}
 	int	idx = input[0] - '0';
 	if (idx < 0 || idx >= max_index){
-		std::cout << "Invalid Index!" << std::endl;
+		std::cout << "IT CAN ONLY BE THE INDEXS PRESENT AT THE TABLE ABOVE!" << std::endl;
 		return ;
 	}
 	PrintContactInfo(idx);
