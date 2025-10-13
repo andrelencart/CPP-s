@@ -20,8 +20,14 @@ void	ParseInput(std::string &input, std::string ColumName){
 
 	while (true){
 		std::getline(std::cin, input);
-		if (input.find('\t') != std::string::npos){
-			std::cout << "Pleased no Tabs" << std::endl;
+		if (std::cin.eof())
+			break;
+		if (input.empty()){
+			std::cout << ColumName;
+			continue;
+		}
+		if (input.find('\t') != std::string::npos || input.find(' ') != std::string::npos){
+			std::cout << "Please no Tabs or Spaces" << std::endl;
 			std::cout << ColumName;
 			continue ;
 		}
