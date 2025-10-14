@@ -1,0 +1,22 @@
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
+
+#include <iomanip>
+#include <iostream>
+#include <cstdlib>
+
+
+class Weapon {
+	
+	public:
+	Weapon(std::string type);
+	~Weapon(void);
+	void Weapon::setType(std::string type);
+	std::string getType(void);
+	
+	private:
+	std::string _type;
+	
+};
+
+#endif

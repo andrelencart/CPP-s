@@ -1,6 +1,6 @@
 
 #ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+# define ZOMBIE_HP{}
 
 #include <iomanip>
 #include <iostream>
@@ -15,14 +15,14 @@ class Zombie {
 	~Zombie(void);
 	
 	void announce( void );
+	void NameSetter( std::string name );
 	
 	private:
 	std::string name;
 	
 };
 
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
+Zombie* zombieHorde( int N, std::string name );
 
 
 #endif

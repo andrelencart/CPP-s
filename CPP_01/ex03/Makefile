@@ -1,11 +1,11 @@
 
-NAME=MoarBrainz
+NAME=UnnecessaryViolence
 CPP=c++
 CPPF= -Wall -Wextra -Werror -g -std=c++98
 OBJ_DIR= Obj
 SRC_DIR= Src
 
-SRC_FILES= main.cpp Zombie.cpp zombieHorde.cpp
+SRC_FILES= main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 
 OBJ= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.cpp=.o))
 SRC= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
