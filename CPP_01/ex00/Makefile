@@ -1,25 +1,25 @@
 
 NAME=brainz
-CPP=c++
-CPPF= -Wall -Wextra -Werror -g -std=c++98
-OBJ_DIR= Obj
+CXX=c++
+CXXFLAGS= -Wall -Wextra -Werror -g -std=c++98
 SRC_DIR= Src
+OBJ_DIR= Obj
 
 SRC_FILES= main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
-OBJ= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.cpp=.o))
 SRC= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+OBJ= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.cpp=.o))
 
 all: $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	
-$(NAME): $(OBJ)
-	$(CPP) $(CPPF) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ) | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	$(CPP) $(CPPF) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	@rm -rf $(OBJ_DIR)
