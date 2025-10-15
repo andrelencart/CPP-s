@@ -6,6 +6,11 @@ Weapon::Weapon(std::string type){
 	std::cout << "Weapon has been Created!!" << std::endl;
 }
 
+// Weapon::Weapon(void){
+// 	std::cout << "Weapon has been Created!!" << std::endl;
+// }
+
+
 Weapon::~Weapon(void){
 	std::cout << "Weapon has been DESTROYED!!" << std::endl;
 }
