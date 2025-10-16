@@ -1,11 +1,11 @@
 
-NAME=Losers
+NAME=Harl
 CPP=c++
 CPPF= -Wall -Wextra -Werror -g -std=c++98
 OBJ_DIR= Obj
 SRC_DIR= Src
 
-SRC_FILES= main.cpp replace.cpp
+SRC_FILES= main.cpp Harl.cpp
 
 OBJ= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.cpp=.o))
 SRC= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
