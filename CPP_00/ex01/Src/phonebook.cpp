@@ -15,6 +15,13 @@ PhoneBook::~PhoneBook(void){
 	std::cout << "PhoneBook Deleted!" << std::endl;
 }
 
+bool	IsValidInput(std::string input){
+	for (size_t i = 0; i < input.length(); ++i){
+		if (!std::isprint(input[i]))
+			return false;
+	}
+	return true;
+}
 
 void	ParseInput(std::string &input, std::string ColumName){
 
@@ -22,10 +29,15 @@ void	ParseInput(std::string &input, std::string ColumName){
 		std::getline(std::cin, input);
 		if (std::cin.eof())
 			break;
-		if (input.empty()){
+		if (input.empty() || !IsValidInput(input)){
 			std::cout << ColumName;
 			continue;
 		}
+		// do{
+		// 	std::cout << ColumName;
+		// 	std::getline(std::cin, input);
+		// } while (!IsValidInput(input));
+
 		if (input.find('\t') != std::string::npos || input.find(' ') != std::string::npos){
 			std::cout << "Please no Tabs or Spaces" << std::endl;
 			std::cout << ColumName;

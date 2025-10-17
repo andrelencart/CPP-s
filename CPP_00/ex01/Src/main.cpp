@@ -3,15 +3,18 @@
 #include <cstdlib>
 #include "../phonebook.hpp"
 
-int	main(void)
+int	main(int ac, char **av)
 {
+	(void)av;
+
+	if (ac > 1){
+		std::cout << "To Many Arguments" << std::endl;
+		return (0);
+	}
 	PhoneBook PhoneBook;
 	std::string cmd;
 	std::cout << "Input Command can be (ADD, SEARCH, EXIT)" << std::endl;
-	while (std::getline(std::cin, cmd)){
-		// std::cout << "Input Command can be (Add, Search, Exit)" << std::endl;
-		// std::getline(std::cin, cmd);
-	
+	while (std::getline(std::cin, cmd)){	
 		if (std::cin.eof())
 			exit(0);
 		if (cmd == "SEARCH")
