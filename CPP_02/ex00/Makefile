@@ -16,9 +16,9 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	
 $(NAME): $(OBJ)
-	@echo "\e[1;91mEx ..."
+	@echo "\e[1;91mCompiling Ex00 ..."
 	@$(CPP) $(CPPF) $(OBJ) -o $(NAME)
-	@echo "\e[1;91mDONE!!"
+	@echo "\e[1;91mDONE !!"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	
@@ -27,7 +27,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 clean:
 	@echo "\e[1;33mClEANING ..."
 	@rm -rf $(OBJ_DIR)
-	@echo "\e[1;33mDONE ..."
+	@echo "\e[1;33mDONE !!"
 	
 fclean: clean
 	@rm -rf $(NAME)
