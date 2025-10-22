@@ -6,7 +6,7 @@ Fixed::Fixed() : _value(0){
 
 Fixed::Fixed(const Fixed& other){
 	std::cout << "Copy constructor called" << std::endl;
-	_value = other._value;
+	*this = other;
 }
 
 Fixed::Fixed(const int conv){
@@ -16,7 +16,7 @@ Fixed::Fixed(const int conv){
 
 Fixed::Fixed(const float numb){
 	std::cout << "Float constructor called" << std::endl;
-	_value = static_cast<int>(roundf(numb * (1 << this->_FractionalBits)));
+	_value = (roundf(numb * (1 << this->_FractionalBits)));
 }
 
 Fixed& Fixed::operator=(const Fixed& other){
