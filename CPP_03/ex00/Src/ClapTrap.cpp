@@ -1,0 +1,50 @@
+#include "../ClapTrap.hpp"
+
+ClapTrap::ClapTrap(){
+	std::cout << "ClapTrap" << " was Created!"<< std::endl; 
+}
+
+ClapTrap::ClapTrap(std::string Name): _Name(Name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0){
+	std::cout << "ClapTrap" << _Name << " was Created!" << std::endl; 
+}
+
+ClapTrap::ClapTrap(const ClapTrap& other){
+	*this = other;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other){
+	if (this != &other){
+		_Name = other._Name;
+		_HitPoints = other._HitPoints;
+		_EnergyPoints = other._EnergyPoints;
+		_AttackDamage = other._AttackDamage;
+	}
+	return *this;
+}
+
+ClapTrap::~ClapTrap(){
+	std::cout << "ClapTrap" << " was Destroyed!"<< std::endl; 
+}
+
+void	ClapTrap::attack(const std::string& target){
+	if (this->_EnergyPoints != 0 || this->_HitPoints != 0)
+	{
+		takeDamage(this->_AttackDamage);
+		this->_EnergyPoints--;
+		std::cout << "ClapTrap " << _Name << " attacks " << target << " causing " << _AttackDamage << " points of damage!" << std::endl; 
+	}
+}
+
+void	ClapTrap::takeDamage(unsigned int amount){
+	std::cout << "ClapTrap " << _Name << " received "<< _AttackDamage << " points of damage! " << std::endl; 
+	this->_HitPoints -= amount;
+}
+
+void	ClapTrap::beRepaired(unsigned int amount){
+	if (this->_EnergyPoints != 0 || this->_HitPoints != 0){
+		this->_HitPoints += amount;
+		this->_EnergyPoints--;
+		std::cout << "ClapTrap " << _Name << " received "<< _HitPoints << " HitPoints! " << std::endl; 
+	}
+}
+
