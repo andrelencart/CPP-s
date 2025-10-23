@@ -23,6 +23,6 @@ class Point{
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);
-Fixed GerArea(Point const a, Point const b, Point const c);
+Fixed GetArea(Point const a, Point const b, Point const c);
 
 #endif

@@ -55,7 +55,10 @@ bool Fixed::operator!=(const Fixed& other)const{
 }
 
 Fixed Fixed::operator+(const Fixed& other)const{
-	return this->_value + other._value;
+	Fixed result;
+
+	result._value = _value + other._value;
+	return result;
 }
 
 Fixed Fixed::operator-(const Fixed& other)const{
