@@ -1,7 +1,6 @@
 #include "../replace.hpp"
 
-Replace::Replace(std::string infile, std::string find, std::string repl) 
-: in_file(infile), s1(find), s2(repl){
+Replace::Replace(std::string infile, std::string find, std::string repl) : in_file(infile), s1(find), s2(repl){
 
 }
 

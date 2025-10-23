@@ -1,6 +1,6 @@
 
 #ifndef ZOMBIE_HPP
-# define ZOMBIE_HP{}
+# define ZOMBIE_HPP
 
 #include <iomanip>
 #include <iostream>

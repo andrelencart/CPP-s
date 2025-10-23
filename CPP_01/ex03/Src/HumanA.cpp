@@ -1,8 +1,6 @@
 #include "../HumanA.hpp"
 
 HumanA::HumanA(std::string name, Weapon &weapon) : _weapon(weapon), _name(name) {
-	// _name = name;
-	// _weapon = weapon;
 	std::cout << "HumanA: " << _name << " has been Created!!" << std::endl;
 }
 
