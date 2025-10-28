@@ -4,7 +4,7 @@ ClapTrap::ClapTrap(){
 	std::cout << "ClapTrap" << " was Created!"<< std::endl; 
 }
 
-ClapTrap::ClapTrap(std::string Name): _Name(Name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0){
+ClapTrap::ClapTrap(std::string Name): _Name(Name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(2){
 	std::cout << "ClapTrap " << _Name << " was Created!" << std::endl; 
 }
 
@@ -23,15 +23,14 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other){
 }
 
 ClapTrap::~ClapTrap(){
-	std::cout << "ClapTrap" << " was Destroyed!"<< std::endl; 
+	std::cout << "ClapTrap " << _Name << " was Destroyed!"<< std::endl; 
 }
 
 void	ClapTrap::attack(const std::string& target){
 	if (this->_EnergyPoints != 0 || this->_HitPoints != 0)
 	{
-		takeDamage(this->_AttackDamage);
-		this->_EnergyPoints--;
 		std::cout << "ClapTrap " << _Name << " attacks " << target << " causing " << _AttackDamage << " points of damage!" << std::endl; 
+		this->_EnergyPoints--;
 	}
 }
 
@@ -44,7 +43,19 @@ void	ClapTrap::beRepaired(unsigned int amount){
 	if (this->_EnergyPoints != 0 || this->_HitPoints != 0){
 		this->_HitPoints += amount;
 		this->_EnergyPoints--;
-		std::cout << "ClapTrap " << _Name << " received "<< _HitPoints << " HitPoints! " << std::endl; 
+		std::cout << "ClapTrap " << _Name << " received "<< amount << " HitPoints! " << std::endl; 
 	}
 }
 
+void ClapTrap::AnnounceStatus(){
+	std::cout << _Name << ": Energy Points - " << _EnergyPoints << std::endl;
+	std::cout << _Name << ": Hit Points - " << _HitPoints << std::endl;
+}
+
+std::string ClapTrap::GetName(){
+	return _Name;
+}
+
+int ClapTrap::GetDammage(){
+	return _AttackDamage;
+}
