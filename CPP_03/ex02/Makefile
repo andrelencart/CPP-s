@@ -1,10 +1,10 @@
-NAME=ClapTrap
+NAME=FragTrap
 CPP=c++
 CPPF= -Wall -Wextra -Werror -g -std=c++98
 OBJ_DIR= Obj
 SRC_DIR= Src
 
-SRC_FILES= main.cpp Fixed.cpp
+SRC_FILES= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp 
 
 OBJ= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.cpp=.o))
 SRC= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
@@ -15,7 +15,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	
 $(NAME): $(OBJ)
-	@echo "\e[1;91mCompiling Ex00 ..."
+	@echo "\e[1;91mCompiling Ex02 ..."
 	@$(CPP) $(CPPF) $(OBJ) -o $(NAME)
 	@echo "\e[1;91mDONE !!"
 

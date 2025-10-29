@@ -1,7 +1,7 @@
 #include "../ClapTrap.hpp"
 
-ClapTrap::ClapTrap(){
-	std::cout << "ClapTrap" << " was Created!"<< std::endl; 
+ClapTrap::ClapTrap(): _Name("Default"), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0){
+	std::cout << "ClapTrap " << _Name << " was Created!"<< std::endl; 
 }
 
 ClapTrap::ClapTrap(std::string Name): _Name(Name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0){
@@ -58,4 +58,20 @@ std::string ClapTrap::GetName(){
 
 int ClapTrap::GetDammage(){
 	return _AttackDamage;
+}
+
+int ClapTrap::GetHitPoints(){
+	return _HitPoints;
+}
+
+void ClapTrap::SetDamage(int Damage){
+	this->_AttackDamage = Damage;
+}
+
+void ClapTrap::SetEnergyPoints(int EnergyPoints){
+	this->_EnergyPoints = EnergyPoints;
+}
+
+void ClapTrap::SetHitPoints(int HitPoints){
+	this->_HitPoints = HitPoints;
 }
