@@ -1,5 +1,5 @@
-#ifndef DIAMONDTRAP
-# define DIAMONDTRAP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
 #include <iostream>
 #include "FragTrap.hpp"
@@ -21,4 +21,4 @@ class DiamondTrap: public ScavTrap, public FragTrap{
 
 };
 
-#endif
+#endif //DIAMONDTRAP_HPP
