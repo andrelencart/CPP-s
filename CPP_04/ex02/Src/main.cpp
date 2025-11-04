@@ -1,10 +1,10 @@
 #include "../Dog.hpp"
 #include "../Cat.hpp"
-#include "../WrongCat.hpp"
 
 int main()
 {
-	Animal* animals[4];
+	AAnimal* animals[4];
+	// AAnimal A;
 	std::size_t n = sizeof(animals) / sizeof(animals[0]);
 
 	for (size_t i = 0; i < n; i++){
@@ -29,5 +29,4 @@ int main()
 		delete animals[i];
 	}
 
-	
 }

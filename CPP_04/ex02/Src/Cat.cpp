@@ -1,18 +1,17 @@
 #include "../Cat.hpp"
 
-Cat::Cat(): Animal("Cat"), _ideas(){
+Cat::Cat(): AAnimal("Cat"), _ideas(){
 	for (int i = 0; i < 100; i++)
 		_ideas.setIdea(i, "I dont Have Ideas im a CAT");
 	std::cout << "A Cat was Created!" << std::endl;
 }
 
-Cat::Cat(const Cat& other): Animal(other), _ideas(other._ideas){
+Cat::Cat(const Cat& other): AAnimal(other), _ideas(other._ideas){
 	
 }
 
 Cat& Cat::operator=(const Cat& other){
 	if (this != &other){
-		Animal::operator=(other);
 		_ideas = other._ideas;
 	}
 	return *this;

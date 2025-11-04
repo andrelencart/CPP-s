@@ -31,3 +31,8 @@ void	Animal::makeSound()const{
 std::string Animal::getType()const{
 	return _type;
 }
+
+std::string Animal::getIdea(std::size_t idx) const{
+	(void)idx;
+	return std::string();
+}

@@ -8,7 +8,7 @@
 class Dog: public Animal{
 
 	private:
-		Brain *_ideas;
+		Brain _ideas;
 
 	public:
 		Dog();
@@ -17,6 +17,7 @@ class Dog: public Animal{
 		~Dog();
 
 		void makeSound() const;
+		virtual std::string getIdea(std::size_t idx) const;
 
 };
 
