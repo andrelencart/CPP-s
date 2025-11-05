@@ -27,10 +27,7 @@ std::string const& AMateria::getType()const{
 	return _type;
 }
 
-AMateria* AMateria::clone()const{
-
-}
-
 void	AMateria::use(ICharacter& target){
-	
+	(void)target;
+	std::cout << getType() << " Spell Available!" << std::endl;
 }
