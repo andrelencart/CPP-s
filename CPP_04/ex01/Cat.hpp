@@ -8,7 +8,7 @@
 class Cat: public Animal{
 
 	private:
-		Brain _ideas;
+		Brain *_ideas;
 
 	public:
 		Cat();

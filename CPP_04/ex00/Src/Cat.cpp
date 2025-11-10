@@ -1,7 +1,7 @@
 #include "../Cat.hpp"
 
 Cat::Cat(): Animal("Cat"){
-	std::cout << "A Cat was Created!" << std::endl;
+	std::cout << "A " << _type << " was Created!" << std::endl;
 }
 
 Cat::Cat(const Cat& other){

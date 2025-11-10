@@ -1,7 +1,7 @@
 #include "../Dog.hpp"
 
 Dog::Dog(): Animal("Dog"){
-	std::cout << "A Dog was Created!" << std::endl;
+	std::cout << "A " << _type << " was Created!" << std::endl;
 }
 
 Dog::Dog(const Dog& other){
