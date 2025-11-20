@@ -7,6 +7,14 @@ We acknowledge that modern C++ differs significantly in many aspects. If you wan
 
 This repository collects small, focused C++ examples (CPP_00 .. CPP_05) meant for learning by doing: compile, run, and modify each example to practice core OOP and C++ fundamentals.
 
+## Modules
+- [CPP_00](#cpp_00)
+- [CPP_01](#cpp_01)
+- [CPP_02](#cpp_02)
+- [CPP_03](#cpp_03)
+- [CPP_04](#cpp_04)
+- [CPP_05](#cpp_05)
+
 ## Files
 ### CPP_00
 Introductory C++ module establishing the foundations you need before deeper OOP:
@@ -63,6 +71,24 @@ Introduces exceptions and controlled error handling:
 - Distinguishing recoverable vs unrecoverable errors and when to throw.
 - Maintaining class invariants when exceptions occur (basic strong / basic guarantee concepts).
 
+## Folder Structure
+```
+CPP-s/
+  README.md
+  CPP_00/
+    ex00/
+      Src/
+        *.cpp
+      Makefile
+      *.hpp
+    ex01/
+    ...
+  CPP_01/
+    ex00/
+    ...
+  CPP_02/
+```
+
 ## Build & run (example)
 Each exercise provides its own Makefile. To build and run an exercise:
 
@@ -88,6 +114,8 @@ make
 
 Cleaning:
 ```bash
+make clean
+# or
 make fclean
 ```
 
