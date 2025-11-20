@@ -1,4 +1,4 @@
-# CPP-s
+# CPP's
 
 ## About
 The goal of these modules is to introduce you to Object‑Oriented Programming. This will be the starting point of your C++ journey. Many languages are recommended for learning OOP, but we chose C++ since it is derived from your old friend, C. As C++ is a complex language, the exercises adhere to the C++98 standard to keep things simple.
