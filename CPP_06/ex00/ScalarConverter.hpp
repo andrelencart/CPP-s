@@ -2,6 +2,10 @@
 # define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <limits.h>
+#include <cmath>
 
 class ScalarConverter{
 	private:
@@ -12,7 +16,7 @@ class ScalarConverter{
 		ScalarConverter& operator=(const ScalarConverter &other);
 		~ScalarConverter();
 
-		static void	convert(std::string literal);
+		static void	convert(const std::string &literal);
 
 };
 
