@@ -18,7 +18,7 @@ ScalarConverter::~ScalarConverter(){
 }
 
 static double parseValue(const std::string &literal, bool &isSpecial){
-	if (literal.length() == 2 && !isdigit(literal[0]))
+	if (literal.length() == 1 && !isdigit(literal[0]))
 		return static_cast<double>(literal[0]);
 	if (literal == "nan" || literal == "nanf"){
 		isSpecial = true;
