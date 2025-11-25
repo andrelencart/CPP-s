@@ -1,9 +1,9 @@
 #include "../B.hpp"
 
 B::B(){
-	std::cout << "A was Created!" << std::endl;
+	std::cout << "B was Created!" << std::endl;
 }
 
 B::~B(){
-	std::cout << "A was Destroyed!" << std::endl;
+	std::cout << "B was Destroyed!" << std::endl;
 }

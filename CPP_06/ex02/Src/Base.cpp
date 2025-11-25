@@ -1,19 +1,10 @@
 #include "../Base.hpp"
+#include "../A.hpp"
+#include "../B.hpp"
+#include "../C.hpp"
 
 Base::~Base(){
 	std::cout << "Base Destroyed!" << std::endl;
-}
-
-Base *Base::generate(void){
-
-}
-
-void	Base::identify(Base *p){
-
-}
-
-void	Base::identify(Base& p){
-
 }
 
 Base *	Base::generate(void){
@@ -26,4 +17,31 @@ Base *	Base::generate(void){
 		return new B();
 	else
 		return new C();
+}
+
+void Base::identify(Base *p){
+	if (dynamic_cast<A*>(p))
+		std::cout << "Pointer to A" << std::endl;
+	else if (dynamic_cast<B*>(p))
+		std::cout << "Pointer to B" << std::endl;
+	else if (dynamic_cast<C*>(p))
+		std::cout << "Pointer to C" << std::endl;
+}
+
+void Base::identify(Base &p){
+	try{
+		(void)dynamic_cast<A&>(p);
+		std::cout << "Reference to A" << std::endl;
+		return;
+	} catch(std::exception &e){}
+	try{
+		(void)dynamic_cast<B&>(p);
+		std::cout << "Reference to B" << std::endl;
+		return;
+	} catch(std::exception &e){}
+	try{
+		(void)dynamic_cast<C&>(p);
+		std::cout << "Reference to C" << std::endl;
+		return;
+	} catch(std::exception &e){}
 }
