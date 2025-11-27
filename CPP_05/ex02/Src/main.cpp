@@ -5,7 +5,7 @@
 #include "../PresidentialPardonForm.hpp"
 
 int main(void) {
-	std::cout << "=== Testing ShrubberyCreationForm ===" << std::endl;
+	std::cout << "---- Testing ShrubberyCreationForm " << std::endl;
 	try {
 		Bureaucrat bob("Bob", 140);
 		ShrubberyCreationForm shrub("home");
@@ -20,7 +20,7 @@ int main(void) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "\n=== Testing RobotomyRequestForm ===" << std::endl;
+	std::cout << "---- Testing RobotomyRequestForm ===" << std::endl;
 	try {
 		Bureaucrat alice("Alice", 45);
 		RobotomyRequestForm robot("Bender");
@@ -36,7 +36,7 @@ int main(void) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "\n=== Testing PresidentialPardonForm ===" << std::endl;
+	std::cout << "---- Testing PresidentialPardonForm " << std::endl;
 	try {
 		Bureaucrat president("President", 1);
 		PresidentialPardonForm pardon("Arthur Dent");
@@ -51,7 +51,7 @@ int main(void) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "\n=== Testing Failures ===" << std::endl;
+	std::cout << "---- Testing Failures " << std::endl;
 	try {
 		Bureaucrat intern("Intern", 150);
 		ShrubberyCreationForm shrub2("garden");
