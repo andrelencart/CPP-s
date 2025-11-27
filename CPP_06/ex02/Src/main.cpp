@@ -6,7 +6,7 @@ int main(void){
 
 	srand(time(NULL));
 
-	std::cout << "=== Testing random generation and identification ===" << std::endl;
+	std::cout << "---- Testing random generation and identification " << std::endl;
 
 	Base* obj1 = Base::generate();
 	Base* obj2 = Base::generate();

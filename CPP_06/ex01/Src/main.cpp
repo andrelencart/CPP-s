@@ -1,7 +1,7 @@
 #include "../Serializer.hpp"
 
 int main(void) {
-	std::cout << "=== Test 1: Valid serialization ===" << std::endl;
+	std::cout << "---- Test 1: Valid serialization " << std::endl;
 
 	Data my_data;
 	my_data._id = 42;
@@ -23,7 +23,7 @@ int main(void) {
 	    std::cout << "Failure: Pointers don't match" << std::endl;
 	}
 
-	std::cout << "\n=== Test 2: Invalid address ===" << std::endl;
+	std::cout << "---- Test 2: Invalid address " << std::endl;
 
 	// Deserialize garbage value
 	uintptr_t garbage = 12345;
