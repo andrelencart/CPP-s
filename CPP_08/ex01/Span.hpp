@@ -1,12 +1,15 @@
 #pragma once
 
 #include <iostream>
-
+#include <vector>
 #include <exception>
+#include <algorithm>
+#include <limits.h>
 
 class Span{
-	protected:
+	private:
 		unsigned int _N;
+		std::vector<int> _numbers;
 	
 	public:
 		Span();
@@ -16,9 +19,10 @@ class Span{
 		~Span();
 
 		void	addNumber(int num);
-		Span	shortestSpan();
-		Span	longestSpan();
-
+		int	shortestSpan();
+		int	longestSpan();
+		void addMutipleNumbers(size_t mult);
+		void addMutipleRandomNumbers(size_t mult);
 };
 
 std::ostream& operator<<(std::ostream& os, const Span& f);

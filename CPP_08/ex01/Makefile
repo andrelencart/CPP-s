@@ -15,7 +15,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	
 $(NAME): $(OBJ)
-	@echo "\e[1;91mCompiling Ex00 ..."
+	@echo "\e[1;91mCompiling Ex01 ..."
 	@$(CPP) $(CPPF) $(OBJ) -o $(NAME)
 	@echo "\e[1;91mDONE !!"
 
