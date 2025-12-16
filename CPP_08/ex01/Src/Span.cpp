@@ -70,4 +70,12 @@ int Span::longestSpan(){
 	return sorted.back() - sorted.front();
 }
 
-
+void Span::printNumbers() const {
+	std::cout << "Numbers in Span: ";
+	for (size_t i = 0; i < _numbers.size(); i++) {
+		std::cout << _numbers[i];
+		if (i < _numbers.size() - 1)
+			std::cout << ", ";
+	}
+	std::cout << std::endl;
+}

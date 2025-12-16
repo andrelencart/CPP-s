@@ -1,20 +1,11 @@
 #include "../Span.hpp"
+#include <cstdlib>
+#include <ctime>
 
-// Main given by Subject
-// int main()
-// {
-// 	Span sp = Span(5);
-// 	sp.addNumber(6);
-// 	sp.addNumber(3);
-// 	sp.addNumber(17);
-// 	sp.addNumber(9);
-// 	sp.addNumber(11);
-// 	std::cout << sp.shortestSpan() << std::endl;
-// 	std::cout << sp.longestSpan() << std::endl;
-// 	return 0;
-// }
+
 
 int main(){
+	std::srand(std::time(0));
 
 	std::cout << "---Subject Test---" << std::endl;
 	try {
@@ -34,10 +25,13 @@ int main(){
 
 	std::cout << "---Test 10000 Numbers---" << std::endl;
 	try {
-		Span spa = Span(10000);
-		spa.addMutipleNumbers(10000);
+		Span spa = Span(10);
+		spa.addMutipleNumbers(10);
 		std::cout << spa.shortestSpan() << std::endl;
 		std::cout << spa.longestSpan() << std::endl;
+		std::cout << std::endl;
+		spa.printNumbers();
+		std::cout << std::endl;
 	}
 	catch (std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
@@ -50,6 +44,9 @@ int main(){
 		span.addMutipleRandomNumbers(100);
 		std::cout << span.shortestSpan() << std::endl;
 		std::cout << span.longestSpan() << std::endl;
+		std::cout << std::endl;
+		span.printNumbers();
+		std::cout << std::endl;
 	}
 	catch (std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;

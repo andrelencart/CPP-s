@@ -23,6 +23,7 @@ class Span{
 		int	longestSpan();
 		void addMutipleNumbers(size_t mult);
 		void addMutipleRandomNumbers(size_t mult);
+		void printNumbers() const;
 };
 
-std::ostream& operator<<(std::ostream& os, const Span& f);
+// std::ostream& operator<<(std::ostream& os, const Span& f);
