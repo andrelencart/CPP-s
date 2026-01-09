@@ -16,8 +16,24 @@ bool isValidDate(const std::string& date){
 	int month = atoi(date.substr(5, 2).c_str());
 	int day = atoi(date.substr(8, 2).c_str());
 
-	if (year < 1 || month < 1 || day < 1 || month > 12 || day > 31)
+	if (year < 1 || month < 1 || day < 1 || month > 12)
 		return false;
+	switch (month)
+	{
+		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+			if (day > 31)
+				return false;
+			break;
+		case 4: case 6: case 9: case 11:
+			if (day > 30)
+				return false;
+			break;
+		case 2:
+			bool isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+			if (day > (isLeap ? 29 : 28))
+				return false;
+			break;
+	}
 	return true;
 }
 
@@ -52,10 +68,14 @@ bool parsingline(const std::string &line, std::string &date, float &value){
 	}
 	std::string ValueTrimed = ValueNotTrimed.substr(start);
 	value = atof(ValueTrimed.c_str());
-	if (!isValidValue(value))
+	if (isValidValue(value) == false)
 		return false;
 	return true;
 
+}
+
+std::map<std::string, float> loadDatabase(const std::string &dbfile){
+	
 }
 
 int	parsing(char **av){
@@ -65,7 +85,12 @@ int	parsing(char **av){
 		return 1;
 	}
 	std::string line;
+	std::getline(file, line);
 	while(std::getline(file, line)){
-		
+		std::string date;
+		float value;
+		if (parsingline(line, date, value) == false)
+			
 	}
+	return 0;
 }
