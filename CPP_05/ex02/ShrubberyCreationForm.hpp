@@ -18,13 +18,6 @@ class ShrubberyCreationForm: public AForm{
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm &other);
 		virtual ~ShrubberyCreationForm();
 
-
-		// std::string getName() const;
-		// int	getGradeToSign() const;
-		// int	getGradeToExecute() const;
-		// bool getIsSigned() const;
-		// bool	beSigned(Bureaucrat &A);
-
 		void executeAction() const;
 
 };

@@ -18,13 +18,6 @@ class PresidentialPardonForm: public AForm{
 		PresidentialPardonForm& operator=(const PresidentialPardonForm &other);
 		virtual ~PresidentialPardonForm();
 
-
-		// std::string getName() const;
-		// int	getGradeToSign() const;
-		// int	getGradeToExecute() const;
-		// bool getIsSigned() const;
-		// bool	beSigned(Bureaucrat &A);
-
 		void executeAction() const;
 
 };

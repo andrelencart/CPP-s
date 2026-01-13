@@ -3,11 +3,11 @@
 int main(void){
 
 	try{
-		Bureaucrat A("RALPH", 50);
+		Bureaucrat A("RALPH", 1);
 		std::cout << A << std::endl;
-		A.IncrementGrade(4);
+		A.IncrementGrade(1);
 		std::cout << A << std::endl;
-		A.DecrementGrade(2);
+		A.DecrementGrade(4);
 		std::cout << A << std::endl;
 
 	}

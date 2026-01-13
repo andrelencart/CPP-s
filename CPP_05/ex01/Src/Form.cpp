@@ -67,17 +67,3 @@ std::ostream& operator<<(std::ostream& os, const Form& b) {
 	os << b.getName() << ", grade to execute: " << b.getGradeToExecute() << ".";
 	return os;
 }
-
-// void	Form::DecrementGrade(int nb_increments){
-// 	if (_Grade < 150 && _Grade >= 1)
-// 		this->_Grade += nb_increments;
-// 	else
-// 		throw GradeTooLowException();
-// }
-
-// void	Form::IncrementGrade(int nb_increments){
-// 	if (_Grade <= 150 && _Grade > 1)
-// 		this->_Grade -= nb_increments;
-// 	else
-// 		throw GradeTooHighException();
-// }

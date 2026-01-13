@@ -6,11 +6,7 @@ PresidentialPardonForm::PresidentialPardonForm(): AForm("default_Robotomy", 25, 
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target)
-: AForm(target + "_form", 75, 45), _target(target){
-	if (_Grade_to_sign < 1 || _Grade_to_execute < 1)
-		throw GradeTooHighException();
-	else if (_Grade_to_sign > 150 || _Grade_to_execute > 150)
-		throw GradeTooLowException();
+: AForm(target + "_form", 25, 5), _target(target){
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other): AForm(other._target, 145, 137){
@@ -18,14 +14,12 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &oth
 }
 
 PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPardonForm &other){
-	if (this != &other){
-		_Is_signed = other._Is_signed;
-	}
+	(void)other;
 	return *this;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm(){
-	std::cout << _Name << " was Deleted!!" << std::endl;
+	std::cout << getName() << " was Deleted!!" << std::endl;
 }
 
 void	PresidentialPardonForm::executeAction() const{

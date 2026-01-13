@@ -2,15 +2,12 @@
 
 RobotomyRequestForm::RobotomyRequestForm(): AForm("default_Robotomy", 75, 45){
 	// std::cout << _Name << " was Created!! -- Grade: " << _Grade << std::endl;
-
+	srand(time(NULL));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target)
-: AForm(target + "_form", 75, 45), _target(target){
-	if (_Grade_to_sign < 1 || _Grade_to_execute < 1)
-		throw GradeTooHighException();
-	else if (_Grade_to_sign > 150 || _Grade_to_execute > 150)
-		throw GradeTooLowException();
+: AForm(target + "_form", 72, 45), _target(target){
+	srand(time(NULL));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other): AForm(other._target, 145, 137){
@@ -18,21 +15,18 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other): AFor
 }
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm &other){
-	if (this != &other){
-		_Is_signed = other._Is_signed;
-	}
+	(void)other;
 	return *this;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(){
-	std::cout << _Name << " was Deleted!!" << std::endl;
+	std::cout << getName() << " was Deleted!!" << std::endl;
 }
 
 void	RobotomyRequestForm::executeAction() const{
 	std::cout << "... Drilling Noises !!!! ..." << std::endl;
 	sleep(2);
 
-	srand(time(NULL));
 	if (rand() % 2 == 0)
 		std::cout << _target << " has been robotomized successfully!" << std::endl;
 	else

@@ -19,13 +19,6 @@ class RobotomyRequestForm: public AForm{
 		RobotomyRequestForm& operator=(const RobotomyRequestForm &other);
 		virtual ~RobotomyRequestForm();
 
-
-		// std::string getName() const;
-		// int	getGradeToSign() const;
-		// int	getGradeToExecute() const;
-		// bool getIsSigned() const;
-		// bool	beSigned(Bureaucrat &A);
-
 		void executeAction() const;
 
 };

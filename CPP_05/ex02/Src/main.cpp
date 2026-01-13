@@ -5,9 +5,9 @@
 #include "../PresidentialPardonForm.hpp"
 
 int main(void) {
-	std::cout << "---- Testing ShrubberyCreationForm " << std::endl;
+	std::cout << "---- Testing ShrubberyCreationForm ----" << std::endl;
 	try {
-		Bureaucrat bob("Bob", 140);
+		Bureaucrat bob("Bob", 100);
 		ShrubberyCreationForm shrub("home");
 	
 		std::cout << bob << std::endl;
@@ -19,10 +19,11 @@ int main(void) {
 	catch (const std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
-
-	std::cout << "---- Testing RobotomyRequestForm ===" << std::endl;
+	std::cout << std::endl;
+	std::cout << "---- Testing RobotomyRequestForm ----" << std::endl;
 	try {
 		Bureaucrat alice("Alice", 45);
+		Bureaucrat andre("Andre", 30);
 		RobotomyRequestForm robot("Bender");
 	
 		std::cout << alice << std::endl;
@@ -30,13 +31,13 @@ int main(void) {
 	
 		alice.SignForm(robot);
 		alice.executeForm(robot);
-		alice.executeForm(robot);
+		andre.executeForm(robot);
 	}
 	catch (const std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
-
-	std::cout << "---- Testing PresidentialPardonForm " << std::endl;
+	std::cout << std::endl;
+	std::cout << "---- Testing PresidentialPardonForm ----" << std::endl;
 	try {
 		Bureaucrat president("President", 1);
 		PresidentialPardonForm pardon("Arthur Dent");
@@ -50,6 +51,7 @@ int main(void) {
 	catch (const std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	std::cout << "---- Testing Failures " << std::endl;
 	try {

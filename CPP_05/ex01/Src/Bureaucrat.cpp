@@ -42,15 +42,15 @@ std::string Bureaucrat::getName() const{
 	return this->_Name;
 }
 
-void	Bureaucrat::DecrementGrade(int nb_increments){
-	if (_Grade < 150 && _Grade >= 1)
+void	Bureaucrat::DecrementGrade(unsigned int nb_increments){
+	if (_Grade < 150 && _Grade >= 1 && _Grade + nb_increments <= 150)
 		this->_Grade += nb_increments;
 	else
 		throw GradeTooLowException();
 }
 
-void	Bureaucrat::IncrementGrade(int nb_increments){
-	if (_Grade <= 150 && _Grade > 1)
+void	Bureaucrat::IncrementGrade(unsigned int nb_increments){
+	if (_Grade <= 150 && _Grade > 1 && _Grade - nb_increments >= 1)
 		this->_Grade -= nb_increments;
 	else
 		throw GradeTooHighException();
