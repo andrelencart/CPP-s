@@ -32,7 +32,7 @@ int main(void)
 	std::cout << std::endl;
 
 	std::cout << "---- Test 4: Assignment Operator" << std::endl;
-	Array<int> assigned(3);
+	Array<int> assigned(10);
 	assigned = numbers;
 	std::cout << "Assigned size: " << assigned.size() << std::endl;
 	std::cout << std::endl;
@@ -42,6 +42,7 @@ int main(void)
 	{
 		std::cout << "Trying to access index 100..." << std::endl;
 		numbers[100] = 42;
+		std::cout << "index 4 = " << numbers[100] << std::endl;
 	}
 	catch (const std::exception& e)
 	{
