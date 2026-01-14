@@ -20,12 +20,18 @@ Base *	Base::generate(void){
 }
 
 void Base::identify(Base *p){
+	if (!p) {
+		std::cout << "Error: NULL pointer" << std::endl;
+		return;
+	}
 	if (dynamic_cast<A*>(p))
 		std::cout << "Pointer to A" << std::endl;
 	else if (dynamic_cast<B*>(p))
 		std::cout << "Pointer to B" << std::endl;
 	else if (dynamic_cast<C*>(p))
 		std::cout << "Pointer to C" << std::endl;
+	else
+		std::cout << "Unknown type" << std::endl;
 }
 
 void Base::identify(Base &p){

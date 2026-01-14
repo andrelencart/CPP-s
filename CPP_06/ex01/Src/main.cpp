@@ -11,31 +11,17 @@ int main(void) {
 	uintptr_t raw = Serializer::serialize(&my_data);
 	Data* ptr = Serializer::deserialize(raw);
 
-	std::cout << "Original address:	" << &my_data << std::endl;
-	std::cout << "Serialized:		0x" << std::hex << raw << std::dec << std::endl;
-	std::cout << "Deserialized:		" << ptr << std::endl;
+	std::cout << "Original address: " << &my_data << std::endl;
+	std::cout << "Serialized: 	  0x" << std::hex << raw << std::dec << std::endl;
+	std::cout << "Deserialized:	  " << ptr << std::endl;
 
-	// Verify
 	if (ptr == &my_data) {
-	    std::cout << "Success: Pointers match!" << std::endl;
-	    std::cout << "Data accessible: " << ptr->_name << std::endl;
+		std::cout << "Success: Pointers match!" << std::endl;
+		std::cout << "Data accessible: " << ptr->_name << std::endl;
 	} else {
-	    std::cout << "Failure: Pointers don't match" << std::endl;
+		std::cout << "Failure: Pointers don't match" << std::endl;
 	}
-
-	std::cout << "---- Test 2: Invalid address " << std::endl;
-
-	// Deserialize garbage value
-	uintptr_t garbage = 12345;
-	Data* bad_ptr = Serializer::deserialize(garbage);
-
-	std::cout << "Garbage value:	" << garbage << std::endl;
-	std::cout << "Deserialized:		" << bad_ptr << std::endl;
-	std::cout << "Original address:	" << &my_data << std::endl;
-
-	if (bad_ptr != &my_data) {
-		std::cout << "As expected: Invalid pointer differs from original" << std::endl;
-	}
+	std::cout << std::endl;
 
 	return 0;
 }
