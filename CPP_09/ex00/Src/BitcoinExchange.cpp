@@ -1,7 +1,5 @@
 #include "../BitcoinExchange.hpp"
 
-// 2011-01-03 | 3
-
 bool isValidDate(const std::string& date){
 	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
 		return false;
@@ -75,10 +73,39 @@ bool parsingline(const std::string &line, std::string &date, float &value){
 }
 
 std::map<std::string, float> loadDatabase(const std::string &dbfile){
-	
+	std::map<std::string, float> db;
+	std::ifstream file(dbfile.c_str());
+
+	if (!file.is_open()){
+		std::cerr << "Error: Could not open Database File!" << std::endl;
+		return db;
+	}
+	std::string line;
+	std::getline(file, line);
+	while(std::getline(file, line)){
+		size_t commaPos = line.find(',');
+		if (commaPos == std::string::npos)
+			continue;
+		std::string date = line.substr(0, commaPos);
+		float rate = atof(line.substr(commaPos + 1).c_str());
+		db[date] = rate;
+	}
+	return db;
+}
+
+float FindExchangeRate(const std::map<std::string, float> &db, const std::string &date){
+	std::map<std::string, float>::const_iterator it = db.upper_bound(date);
+
+	if (it == db.begin())
+		return -1;
+	--it;
+	return it->second;
 }
 
 int	parsing(char **av){
+	std::map<std::string, float> db = loadDatabase("data.csv");
+	if (db.empty())
+		return 1;
 	std::ifstream file(av[1]);
 	if (!file.is_open()){
 		std::cerr << "Error: could not open file" << std::endl;
@@ -90,7 +117,13 @@ int	parsing(char **av){
 		std::string date;
 		float value;
 		if (parsingline(line, date, value) == false)
-			
+			continue ;
+		float rate = FindExchangeRate(db, date);
+		if (rate < 0){
+			std::cerr << "Error: not in the database!" << std::endl;
+			continue ;
+		}
+		std::cout << date << " => " << value << " = " << (value * rate) << std::endl;
 	}
 	return 0;
 }

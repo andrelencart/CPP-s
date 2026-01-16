@@ -1,4 +1,4 @@
-NAME=Ex02
+NAME=MutantStack
 CPP=c++
 CPPF= -Wall -Wextra -Werror -g -std=c++98
 OBJ_DIR= Obj

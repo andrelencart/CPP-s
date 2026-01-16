@@ -1,4 +1,4 @@
-NAME=Ex01
+NAME=Span
 CPP=c++
 CPPF= -Wall -Wextra -Werror -g -std=c++98
 OBJ_DIR= Obj

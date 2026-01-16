@@ -1,4 +1,4 @@
-NAME=Ex00
+NAME=easyfind
 CPP=c++
 CPPF= -Wall -Wextra -Werror -g -std=c++98
 OBJ_DIR= Obj
