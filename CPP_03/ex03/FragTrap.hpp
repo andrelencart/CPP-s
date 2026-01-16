@@ -6,7 +6,7 @@
 
 class FragTrap : virtual public ClapTrap{
 
-	public:
+	protected:
 		std::string _Name;
 
 	public:
