@@ -9,7 +9,7 @@
 class RPN
 {
 	private:
-		std::stack<int> num;
+		std::stack<int> _Stack;
 	public:
 		RPN();
 		RPN(const RPN &copy);

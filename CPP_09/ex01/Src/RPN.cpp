@@ -21,15 +21,15 @@ std::string RPN::CalculateInput(std::string input){
 		if (token.length() == 1){
 			if (isdigit(token[0])){
 				int number = token[0] - '0';
-				num.push(number);
+				_Stack.push(number);
 			}
 			else if (strchr("*+-/", token[0])){
-				int n2 = num.top();
-				num.pop();
-				int n1 = num.top(); 
-				num.pop();
+				int n2 = _Stack.top();
+				_Stack.pop();
+				int n1 = _Stack.top(); 
+				_Stack.pop();
 				int result = CalculateOperators(n1, n2, token[0]);
-				num.push(result);
+				_Stack.push(result);
 			}
 			else
 				continue;
@@ -37,11 +37,10 @@ std::string RPN::CalculateInput(std::string input){
 		else
 			return "Error\n";
 	}
-	if (num.size() != 1){
+	if (_Stack.size() != 1){
 		return "Error\n";
 	}
-	int res = num.top();
-
+	int res = _Stack.top();
 	std::ostringstream oss;
 	oss << res;
 	return oss.str();
