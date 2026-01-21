@@ -3,6 +3,8 @@
 # include <iostream>
 # include <cstdlib>
 # include <stack>
+# include <cstring>
+# include <sstream>
 
 class RPN
 {
@@ -14,6 +16,6 @@ class RPN
 		RPN &operator=(const RPN &copy);
 		~RPN();
 	
-	std::string ParsingInput(std::string input);
-	int		CalculateOperators(int n1, int n2, char type);
+	std::string CalculateInput(std::string input);
+	int	CalculateOperators(int n1, int n2, char type);
 };
