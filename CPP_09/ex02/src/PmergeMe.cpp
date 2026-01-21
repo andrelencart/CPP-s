@@ -15,9 +15,19 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &copy){
 
 PmergeMe::PmergeMe(int ac, char **av){
 	for (int i = 1; i < ac; i++){
-		
+
 	}
 
 };
 
+bool PmergeMe::IsValideNumber(const std::string &str){
+	if (str.empty())
+		return false;
+	
+	for (size_t i = 0; i < str.length(); i++){
+		if (!std::isdigit(str[i]))
+			return false;
+	}
+	return true;
+};
 

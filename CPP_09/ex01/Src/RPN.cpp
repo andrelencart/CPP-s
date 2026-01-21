@@ -19,11 +19,11 @@ std::string RPN::CalculateInput(std::string input){
 
 	while (in >> token){
 		if (token.length() == 1){
-			if (isdigit(token[0])){
+			if (std::isdigit(token[0])){
 				int number = token[0] - '0';
 				_Stack.push(number);
 			}
-			else if (strchr("*+-/", token[0])){
+			else if (std::strchr("*+-/", token[0])){
 				int n2 = _Stack.top();
 				_Stack.pop();
 				int n1 = _Stack.top(); 

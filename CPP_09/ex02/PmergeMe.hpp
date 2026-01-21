@@ -8,6 +8,8 @@ class PmergeMe{
 	private:
 		std::deque<int> _Dec;
 		std::vector<int> _Vec;
+
+		bool IsValideNumber(const std::string &str);
 	
 	public:
 		PmergeMe();
