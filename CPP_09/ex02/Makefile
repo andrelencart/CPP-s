@@ -25,7 +25,6 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)$(NAME) Created successfully!!$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	
 	@$(CPP) $(CPPF) -c $< -o $@
 
 clean:
