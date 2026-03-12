@@ -20,7 +20,7 @@ PmergeMe::PmergeMe(int ac, char **av){
 			throw std::runtime_error("Error\n");
 		long num = IsNumberTooLong(input);
 		_Vec.push_back(static_cast<int>(num));
-		_Dec.push_back(static_cast<int>(num));
+		_Deq.push_back(static_cast<int>(num));
 	}
 }
 
@@ -58,7 +58,7 @@ void PmergeMe::DisplayOutput(std::string str){
 	std::cout << std::endl;
 }
 
-int PmergeMe::BinarySearch(const std::vector<int>& vec, int value, int left, int right){
+int PmergeMe::BinarySearchVector(const std::vector<int>& vec, int value, int left, int right){
 	while(left <= right){
 		int mid = left + (right - left) / 2;
 
@@ -71,6 +71,9 @@ int PmergeMe::BinarySearch(const std::vector<int>& vec, int value, int left, int
 }
 
 void PmergeMe::SortVector(){
+	struct timeval start, end;
+	gettimeofday(&start, NULL);
+
 	if (_Vec.size() <= 1)
 		return ;
 	std::vector<std::pair<int, int> > pairs;
@@ -93,12 +96,74 @@ void PmergeMe::SortVector(){
 	
 	std::sort(mainChain.begin(), mainChain.end());
 	for(size_t i = 0; i < pairs.size(); i++) {
-		int pos = BinarySearch(mainChain, pairs[i].first, 0, mainChain.size() - 1);
+		int pos = BinarySearchVector(mainChain, pairs[i].first, 0, mainChain.size() - 1);
 		mainChain.insert(mainChain.begin() + pos, pairs[i].first);
 	}
 	if (off_elmt != -1){
-		int pos = BinarySearch(mainChain, off_elmt, 0, mainChain.size() - 1);
+		int pos = BinarySearchVector(mainChain, off_elmt, 0, mainChain.size() - 1);
 		mainChain.insert(mainChain.begin() + pos, off_elmt);
 	}
 	_Vec = mainChain;
+
+	gettimeofday(&end, NULL);
+	_VecTime = (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
+}
+
+int PmergeMe::BinarySearchDeque(const std::deque<int>& deq, int value, int left, int right){
+	while(left <= right){
+		int mid = left + (right - left) / 2;
+
+		if (deq[mid] < value)
+			left = mid + 1;
+		else
+			right = mid - 1;
+	}
+	return left;
+}
+
+void PmergeMe::SortDeque(){
+	struct timeval start, end;
+	gettimeofday(&start, NULL);
+
+	if (_Deq.size() <= 1)
+		return ;
+	std::vector<std::pair<int, int> > pairs;
+	int off_elmt = -1;
+
+	for (size_t i = 0; i + 1 < _Deq.size(); i += 2) {
+		int a = _Deq[i];
+		int b = _Deq[i + 1];
+		if (a > b)
+			pairs.push_back(std::make_pair(b, a));
+		else
+			pairs.push_back(std::make_pair(a, b));
+	}
+	if (_Deq.size() % 2 != 0)
+		off_elmt = _Deq[_Deq.size() - 1];
+	
+	std::deque<int> mainChain;
+	for (size_t i = 0; i < pairs.size(); i++)
+		mainChain.push_back(pairs[i].second);
+	
+	std::sort(mainChain.begin(), mainChain.end());
+	for(size_t i = 0; i < pairs.size(); i++) {
+		int pos = BinarySearchDeque(mainChain, pairs[i].first, 0, mainChain.size() - 1);
+		mainChain.insert(mainChain.begin() + pos, pairs[i].first);
+	}
+	if (off_elmt != -1){
+		int pos = BinarySearchDeque(mainChain, off_elmt, 0, mainChain.size() - 1);
+		mainChain.insert(mainChain.begin() + pos, off_elmt);
+	}
+	_Deq = mainChain;
+
+	gettimeofday(&end, NULL);
+	_DeqTime = (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
+}
+
+void PmergeMe::DisplayTime(){
+	std::cout << std::fixed << std::setprecision(5);
+	std::cout << "Time to process a range of " << _Vec.size() 
+			<< " elements with std::vector : " << _VecTime << " us" << std::endl;
+	std::cout << "Time to process a range of " << _Deq.size	() 
+			<< " elements with std::deque : " << _DeqTime << " us" << std::endl;
 }

@@ -10,7 +10,9 @@ int main(int ac, char **av){
 		PmergeMe Pm(ac, av);
 		Pm.DisplayOutput("Before");
 		Pm.SortVector();
+		Pm.SortDeque();
 		Pm.DisplayOutput("After");
+		Pm.DisplayTime();
 	}
 	catch (const std::exception &e){
 		std::cerr << e.what();
