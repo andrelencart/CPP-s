@@ -9,12 +9,12 @@ int main(int ac, char **av){
 	try{
 		PmergeMe Pm(ac, av);
 		Pm.DisplayOutput("Before");
+		Pm.SortVector();
 		Pm.DisplayOutput("After");
 	}
 	catch (const std::exception &e){
 		std::cerr << e.what();
 		return 1;
 	}
-
-	
+	return 0;
 }

@@ -6,6 +6,7 @@
 # include <cstdlib>
 # include <vector>
 # include <deque>
+# include <algorithm>
 
 class PmergeMe{
 	private:
@@ -14,6 +15,7 @@ class PmergeMe{
 
 		bool IsValideNumber(const std::string &str);
 		long IsNumberTooLong(const std::string &str);
+		int BinarySearch(const std::vector<int>& vec, int value, int left, int right);
 		
 	public:
 		PmergeMe();
@@ -23,4 +25,5 @@ class PmergeMe{
 		~PmergeMe();
 
 		void DisplayOutput(std::string str);
+		void SortVector();
 	};
