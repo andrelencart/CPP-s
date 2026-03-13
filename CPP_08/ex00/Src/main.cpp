@@ -18,7 +18,7 @@ int main(void){
 	}
 
 	try {
-		std::vector<int>::iterator it = easyfind(vec, 99);
+		std::vector<int>::iterator it = easyfind(vec, 40);
 		std::cout << "Found in vector: " << *it << std::endl;
 	} catch (std::exception &e) {
 		std::cout << "Error: " << e.what() << std::endl;
@@ -30,7 +30,7 @@ int main(void){
 	lst.push_back(25);
 
 	try {
-		std::list<int>::iterator it = easyfind(lst, 15);
+		std::list<int>::iterator it = easyfind(lst, 5);
 		std::cout << "Found in list: " << *it << std::endl;
 	} catch (std::exception &e) {
 	std::cout << "Error: " << e.what() << std::endl;
