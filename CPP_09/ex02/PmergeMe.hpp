@@ -19,9 +19,12 @@ class PmergeMe{
 
 		bool IsValideNumber(const std::string &str);
 		long IsNumberTooLong(const std::string &str);
-		int BinarySearchVector(const std::vector<int>& vec, int value, int left, int right);
-		int BinarySearchDeque(const std::deque<int>& deq, int value, int left, int right);
-		
+		int BinarySearchVectorBound(const std::vector<int>& vec, int value, size_t rightBound);
+		int BinarySearchDequeBound(const std::deque<int>& vec, int value, size_t rightBound);
+		void SortPairsByARecursiveVector(std::vector<std::pair<int, int> >& pairs);
+		void SortPairsByARecursiveDeque(std::deque<std::pair<int, int> >& pairs);
+		std::vector<size_t> BuildJacobsthalOrder(size_t pendCount);
+
 	public:
 		PmergeMe();
 		PmergeMe(int ac, char **av);
