@@ -9,7 +9,12 @@ PmergeMe::PmergeMe(const PmergeMe &copy){
 }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &copy){
-	(void)copy;
+		if (this != &copy){
+		_Vec = copy._Vec;
+		_Deq = copy._Deq;
+		_VecTime = copy._VecTime;
+		_DeqTime = copy._DeqTime;
+	}
 	return *this;
 }
 
@@ -29,7 +34,7 @@ bool PmergeMe::IsValideNumber(const std::string &str){
 		return false;
 	
 	for (size_t i = 0; i < str.length(); i++){
-		if (!std::isdigit(str[i]))
+		if (!std::isdigit(static_cast<unsigned char>(str[i])))
 			return false;
 	}
 	return true;

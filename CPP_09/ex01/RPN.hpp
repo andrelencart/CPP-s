@@ -3,6 +3,7 @@
 # include <iostream>
 # include <cstdlib>
 # include <stack>
+# include <cctype>
 # include <cstring>
 # include <sstream>
 
@@ -17,5 +18,5 @@ class RPN
 		~RPN();
 	
 	std::string CalculateInput(std::string input);
-	int	CalculateOperators(int n1, int n2, char type);
+	bool	CalculateOperators(int n1, int n2, char type, int &out);
 };

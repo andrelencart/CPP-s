@@ -6,7 +6,7 @@ bool isValidDate(const std::string& date){
 	for (int i = 0; i < 10; i++){
 		if (i == 4 || i == 7)
 			continue;
-		if (!isdigit(date[i]))
+		if (!isdigit(static_cast<unsigned char>(date[i])))
 			return false;
 	}
 
@@ -26,11 +26,17 @@ bool isValidDate(const std::string& date){
 			if (day > 30)
 				return false;
 			break;
-		case 2:
+		case 2: {
 			bool isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-			if (day > (isLeap ? 29 : 28))
+			int maxDay;
+			if (isLeap)
+				maxDay = 29;
+			else
+				maxDay = 28;
+			if (day > maxDay)
 				return false;
 			break;
+		}
 	}
 	return true;
 }
@@ -45,11 +51,19 @@ bool isValidValue(const float &value){
 		return false;
 	}
 	return true;
-}	
+}
+
+static bool parseFloatStrict(const std::string& s, float &out){
+	char *end = NULL;
+	out = static_cast<float>(strtod(s.c_str(), &end));
+	if (end == s.c_str() || *end != '\0')
+		return false;
+	return true;
+}
 
 bool parsingline(const std::string &line, std::string &date, float &value){
 	size_t pipePos = line.find('|');
-	if (pipePos == std::string::npos){
+	if (pipePos == std::string::npos || line.size() < 14 || line[10] != ' ' || line[11] != '|' || line[12] != ' '){
 		std::cerr << "Error: bad input => " << line << std::endl;
 		return false;
 	}
@@ -65,7 +79,10 @@ bool parsingline(const std::string &line, std::string &date, float &value){
 		return false;
 	}
 	std::string ValueTrimed = ValueNotTrimed.substr(start);
-	value = atof(ValueTrimed.c_str());
+	if (!parseFloatStrict(ValueTrimed, value)){
+		std::cerr << "Error: bad input => " << line << std::endl;
+		return false;
+	}
 	if (isValidValue(value) == false)
 		return false;
 	return true;
@@ -87,7 +104,12 @@ std::map<std::string, float> loadDatabase(const std::string &dbfile){
 		if (commaPos == std::string::npos)
 			continue;
 		std::string date = line.substr(0, commaPos);
-		float rate = atof(line.substr(commaPos + 1).c_str());
+		float rate;
+		std::string rateStr = line.substr(commaPos + 1);
+		if (!parseFloatStrict(rateStr, rate))
+			continue;
+		if (!isValidDate(date))
+			continue;
 		db[date] = rate;
 	}
 	return db;

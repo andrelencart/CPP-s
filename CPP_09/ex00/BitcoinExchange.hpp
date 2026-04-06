@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <cctype>
 #include <stdlib.h>
 #include <fstream>
 #include <map>

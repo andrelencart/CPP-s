@@ -4,6 +4,7 @@
 # include <iomanip>
 # include <exception>
 # include <climits>
+# include <cctype>
 # include <sys/time.h>
 # include <cstdlib>
 # include <vector>

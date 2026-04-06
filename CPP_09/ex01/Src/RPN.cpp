@@ -9,7 +9,9 @@ RPN::RPN(const RPN &copy){
 }
 
 RPN& RPN::operator=(const RPN &copy){
-	(void)copy;
+	if (this != &copy){
+		_Stack = copy._Stack;
+	}
 	return *this;
 }
 
@@ -19,26 +21,31 @@ std::string RPN::CalculateInput(std::string input){
 
 	while (in >> token){
 		if (token.length() == 1){
-			if (std::isdigit(token[0])){
+			if (std::isdigit(static_cast<unsigned char>(token[0]))){
 				int number = token[0] - '0';
 				_Stack.push(number);
 			}
 			else if (std::strchr("*+-/", token[0])){
-				int n2 = _Stack.top();
-				_Stack.pop();
-				int n1 = _Stack.top(); 
-				_Stack.pop();
-				int result = CalculateOperators(n1, n2, token[0]);
+				if (_Stack.size() < 2)
+					return "Error";
+				int n2 = _Stack.top(); _Stack.pop();
+				int n1 = _Stack.top(); _Stack.pop();
+				int result;
+				if (!CalculateOperators(n1, n2, token[0], result)){
+					if (token[0] == '/')
+						return "Error: division by zero";
+					return "Error";
+				}
 				_Stack.push(result);
 			}
 			else
-				continue;
+				return "Error";
 		}
 		else
-			return "Error\n";
+			return "Error";
 	}
 	if (_Stack.size() != 1){
-		return "Error\n";
+		return "Error";
 	}
 	int res = _Stack.top();
 	std::ostringstream oss;
@@ -46,24 +53,26 @@ std::string RPN::CalculateInput(std::string input){
 	return oss.str();
 }
 
-int RPN::CalculateOperators(int n1, int n2, char type){
+bool RPN::CalculateOperators(int n1, int n2, char type, int &out){
 
 	switch (type)
 	{
 		case '+':
-			return (n1 + n2);
+			out = n1 + n2;
+			return true;
 		case '-':
-			return (n1 - n2);
+			out = n1 - n2;
+			return true;
 		case '*':
-			return (n1 * n2);
+			out = n1 * n2;
+			return true;
 		case '/':
-			if (n2 == 0) {
-				std::cerr << "Error: division by zero" << std::endl;
-				exit(1);
+			if (n2 == 0){
+				return false;
 			}
-			return (n1 / n2);
+			out = n1 / n2;
+			return true;
 		default:
-			std::cerr << "Error: invalid operator" << std::endl;
-			exit(1);
+			return false;
 	}
 }
