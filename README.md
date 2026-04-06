@@ -1,11 +1,11 @@
 # CPP's
 
 ## About
-The goal of these modules is to introduce you to Object‑Oriented Programming. This will be the starting point of your C++ journey. Many languages are recommended for learning OOP, but we chose C++ s[...] 
+`CPP-s` is my collection of 42 School C++ module projects (CPP_00 → CPP_09).
 
-We acknowledge that modern C++ differs significantly in many aspects. If you want to become a proficient C++ developer, it will be up to you to explore further beyond the 42 Common Core!
+I’m using this repo to track my progress from C fundamentals into C++: object-oriented design, memory/lifetime, inheritance and polymorphism, exceptions, templates, and the STL. Every folder contains small exercises with their own Makefile so I can compile and test things quickly while learning.
 
-This repository collects small, focused C++ examples (**CPP_00 .. CPP_09**) meant for learning by doing: compile, run, and modify each example to practice core OOP and C++ fundamentals.
+Each module is split into exercises (`ex00`, `ex01`, …). If you're also learning, feel free to browse, run the code, and compare approaches.
 
 ## Modules
 - [CPP_00](#cpp_00)
