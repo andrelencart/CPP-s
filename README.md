@@ -1,11 +1,11 @@
 # CPP's
 
 ## About
-The goal of these modules is to introduce you to Object‑Oriented Programming. This will be the starting point of your C++ journey. Many languages are recommended for learning OOP, but we chose C++ since it is derived from your old friend, C. As C++ is a complex language, the exercises adhere to the C++98 standard to keep things simple.
+The goal of these modules is to introduce you to Object‑Oriented Programming. This will be the starting point of your C++ journey. Many languages are recommended for learning OOP, but we chose C+[...]  
 
 We acknowledge that modern C++ differs significantly in many aspects. If you want to become a proficient C++ developer, it will be up to you to explore further beyond the 42 Common Core!
 
-This repository collects small, focused C++ examples (CPP_00 .. CPP_05) meant for learning by doing: compile, run, and modify each example to practice core OOP and C++ fundamentals.
+This repository collects small, focused C++ examples (CPP_00 .. CPP_09) meant for learning by doing: compile, run, and modify each example to practice core OOP and C++ fundamentals.
 
 ## Modules
 - [CPP_00](#cpp_00)
@@ -14,6 +14,10 @@ This repository collects small, focused C++ examples (CPP_00 .. CPP_05) meant fo
 - [CPP_03](#cpp_03)
 - [CPP_04](#cpp_04)
 - [CPP_05](#cpp_05)
+- [CPP_06](#cpp_06)
+- [CPP_07](#cpp_07)
+- [CPP_08](#cpp_08)
+- [CPP_09](#cpp_09)
 
 ## Files
 ### CPP_00
@@ -71,6 +75,34 @@ Introduces exceptions and controlled error handling:
 - Distinguishing recoverable vs unrecoverable errors and when to throw.
 - Maintaining class invariants when exceptions occur (basic strong / basic guarantee concepts).
 
+### CPP_06
+Casts, conversions, and runtime type identification:
+- Scalar conversions: converting between `char`, `int`, `float`, `double` and understanding edge cases.
+- Serialization basics: turning pointers into integer types (`uintptr_t`) and back safely.
+- RTTI and dynamic casting: using `dynamic_cast` and `typeid` to identify derived types at runtime.
+- Understanding when casts are safe vs undefined behavior, and how to design APIs to minimize risky casting.
+
+### CPP_07
+Templates and generic programming:
+- Function templates: writing reusable algorithms without sacrificing type safety.
+- Class templates: generic container-like types with template parameters.
+- Template specialization and limitations in C++98.
+- Type-agnostic code style: writing utilities that work for many types while keeping interfaces clean.
+
+### CPP_08
+STL containers, iterators, and algorithms:
+- Using standard containers (e.g. `std::vector`, `std::list`, `std::deque`) effectively.
+- Iterators: traversal patterns, iterator categories, and iterator validity.
+- Algorithm mindset: prefer `std::algorithm` functions over manual loops when possible.
+- Searching, counting, and transforming collections while preserving const-correctness.
+
+### CPP_09
+STL in practice, parsing, and performance-minded code:
+- Parsing structured input: validating tokens, handling errors, and keeping parsers robust.
+- Associative containers (e.g. `std::map`, `std::set`) and choosing appropriate data structures.
+- Performance considerations: complexity, avoiding unnecessary copies, and working with large datasets.
+- Combining multiple components into a small end-to-end program.
+
 ## Folder Structure
 ```
 CPP-s/
@@ -92,7 +124,7 @@ CPP-s/
 ## Build & run (example)
 Each exercise provides its own Makefile. To build and run an exercise:
 
-1. Change to the module folder (CPP_00 .. CPP_05):
+1. Change to the module folder (CPP_00 .. CPP_09):
 ```bash
 cd CPP_02
 ```
@@ -118,5 +150,3 @@ make clean
 # or
 make fclean
 ```
-
-
