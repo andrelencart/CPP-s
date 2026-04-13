@@ -1,11 +1,11 @@
 # CPP's
 
 ## About
-The goal of these modules is to introduce you to Object‑Oriented Programming. This will be the starting point of your C++ journey. Many languages are recommended for learning OOP, but we chose C++ since it is derived from your old friend, C. As C++ is a complex language, the exercises adhere to the C++98 standard to keep things simple.
+`CPP-s` is my collection of 42 School C++ module projects (CPP_00 → CPP_09).
 
-We acknowledge that modern C++ differs significantly in many aspects. If you want to become a proficient C++ developer, it will be up to you to explore further beyond the 42 Common Core!
+I’m using this repo to track my progress from C fundamentals into C++: object-oriented design, memory/lifetime, inheritance and polymorphism, exceptions, templates, and the STL. Every folder contains small exercises with their own Makefile so I can compile and test things quickly while learning.
 
-This repository collects small, focused C++ examples (CPP_00 .. CPP_05) meant for learning by doing: compile, run, and modify each example to practice core OOP and C++ fundamentals.
+Each module is split into exercises (`ex00`, `ex01`, …). If you're also learning, feel free to browse, run the code, and compare approaches.
 
 ## Modules
 - [CPP_00](#cpp_00)
@@ -14,62 +14,81 @@ This repository collects small, focused C++ examples (CPP_00 .. CPP_05) meant fo
 - [CPP_03](#cpp_03)
 - [CPP_04](#cpp_04)
 - [CPP_05](#cpp_05)
+- [CPP_06](#cpp_06)
+- [CPP_07](#cpp_07)
+- [CPP_08](#cpp_08)
+- [CPP_09](#cpp_09)
 
-## Files
+## Concepts by module
+
 ### CPP_00
-Introductory C++ module establishing the foundations you need before deeper OOP:
-- Environment & workflow: using a simple Makefile, separating headers (`.hpp`) from implementation (`.cpp`), compiling with C++98 flags and warnings enabled.
-- Basic standard I/O: `std::cout`, `std::cin`, `std::cerr`, simple formatting and string manipulation.
-- Command‑line argument handling: reading and transforming arguments to practice program entry and data flow.
-- First classes: defining minimal classes with private data and public methods; understanding constructors and the need for proper encapsulation.
-- Static members & basic bookkeeping: introducing the idea of data shared across all instances.
-- Style & discipline: consistent naming, header include guards, minimal dependencies, and clean, deterministic output.
+C++ basics and first steps into OOP:
+- Basic build workflow (Makefile, compile flags, warnings).
+- Standard I/O (`std::cout`, `std::cin`, `std::cerr`) and simple formatting.
+- Command‑line arguments and basic string handling.
+- First classes: constructors, methods, encapsulation.
+- Static members (data shared across instances).
 
 ### CPP_01
-Builds on the foundations of CPP_00 by introducing manual memory management and deeper class interaction:
-- Dynamic allocation & lifetime: `new` / `delete`, creating objects on heap vs stack, managing arrays of objects.
-- Pointers vs references: semantic differences (rebindability, nullability), passing and returning by reference, avoiding unnecessary copies.
-- Initialization & class relationships: constructor initialization lists, member composition, objects that reference external resources (e.g. a `Weapon` held by a `Human` class).
-- Basic resource safety discipline under C++98 (no smart pointers yet): clear ownership rules and avoiding leaks.
-- File I/O & simple text processing: using `std::ifstream`, `std::ofstream`, and performing straightforward string find/replace operations.
-- Simple behavior dispatch: mapping input strings (e.g. log/complaint levels) to member function calls (arrays of function pointers or conditional chains).
-- Encapsulation & clarity: separating interface (`.hpp`) from implementation, minimizing unnecessary `#include`s, and keeping class responsibilities focused.
+Memory, references, and slightly bigger class interactions:
+- Stack vs heap, `new` / `delete`, and object lifetime.
+- Pointers vs references (when to use which).
+- Constructor initialization lists and composition.
+- File I/O (`std::ifstream` / `std::ofstream`) + simple text replacement.
+- Simple “dispatch” patterns (input string → method called).
 
 ### CPP_02
-Value Types, Canonical Form & Operator Overloading:
-- Operator overloading: giving user‑defined types natural arithmetic / comparison / stream behaviors.
-- Orthodox Canonical Form (OCF): proper implementation of default constructor, copy constructor, copy assignment operator, and destructor (rule of three) for resource safety.
-- Fixed‑point or custom numeric class design: internal representation vs public interface.
-- Encapsulation of invariants: ensuring class state remains valid after operations.
-- Method chaining & fluent interfaces where appropriate.
-- Precision, conversions, and explicit vs implicit constructors.
+Value types and operator overloading:
+- Operator overloading (arithmetic, comparison, stream output).
+- Orthodox Canonical Form / rule of three (copy/assign/destruct).
+- Building a small numeric/value type (fixed-point style design).
+- Conversions and precision basics.
 
 ### CPP_03
-Focuses on inheritance:
-- Base vs derived class relationships: reusing and extending behavior.
-- Access specifiers (`public`, `protected`, `private`) and their effect on inheritance.
-- Constructor and destructor ordering: ensuring proper resource setup/teardown in hierarchies.
-- Overriding vs hiding: understanding when a derived method supersedes a base method.
-- Using base class functions from derived classes (`Base::func()` calls).
-- Avoiding common pitfalls (slicing, unnecessary inheritance, fragile hierarchies).
+Inheritance fundamentals:
+- Base vs derived classes (reuse and extension).
+- Constructor/destructor order in class hierarchies.
+- Overriding vs hiding methods.
+- Access specifiers (`public` / `protected` / `private`) in inheritance.
+- Common pitfalls (like slicing).
 
 ### CPP_04
-Introduces subtype polymorphism and abstract interfaces:
-- Virtual functions & dynamic dispatch: invoking derived behavior via base pointers/references.
-- Abstract classes & pure virtual methods: defining interfaces that cannot be instantiated.
-- Virtual destructors: ensuring proper cleanup through base pointers.
-- Polymorphic cloning or factory patterns (creating copies of derived objects via base interface).
-- Interface segregation: keeping abstract bases focused and minimal.
-- Potential multiple inheritance considerations (and why to be cautious).
+Polymorphism and interfaces:
+- Virtual functions and dynamic dispatch.
+- Abstract classes and pure virtual methods.
+- Virtual destructors (safe deletion through base pointers).
+- Using base pointers/references to work with derived objects.
 
 ### CPP_05
-Introduces exceptions and controlled error handling:
-- `try` / `catch` / `throw`: basic syntax and flow.
-- Designing exception types (custom classes vs using `std::exception` derivatives).
-- Granularity of exception handling: catching by reference, specific vs generic handlers.
-- Ensuring strong/exception‑safe operations: commit or rollback patterns in modifying functions.
-- Distinguishing recoverable vs unrecoverable errors and when to throw.
-- Maintaining class invariants when exceptions occur (basic strong / basic guarantee concepts).
+Exceptions and error handling:
+- `try` / `catch` / `throw` basics.
+- Using / creating exception types (often based on `std::exception`).
+- Catching correctly (by reference; specific before generic).
+- Keeping class invariants: exception-safety basics.
+
+### CPP_06
+Casts, conversions, and RTTI:
+- Scalar conversions (`char`, `int`, `float`, `double`) + edge cases.
+- Pointer serialization (`uintptr_t`) and deserialization.
+- RTTI (`dynamic_cast`, `typeid`) and runtime type identification.
+
+### CPP_07
+Templates and generic programming:
+- Function templates (write code that works for many types).
+- Class templates (generic data structures / types).
+- Template limitations and common patterns in C++98.
+
+### CPP_08
+STL containers and algorithms:
+- Core containers (e.g. `std::vector`, `std::list`, `std::deque`).
+- Iterators and iterator validity.
+- Using `<algorithm>` helpers (searching, counting, transforming).
+
+### CPP_09
+Putting STL and parsing together:
+- Parsing + validation (robust input handling).
+- Associative containers (e.g. `std::map`, `std::set`) when order/lookup matters.
+- Complexity/performance basics (avoid unnecessary copies, pick the right structure).
 
 ## Folder Structure
 ```
@@ -92,7 +111,7 @@ CPP-s/
 ## Build & run (example)
 Each exercise provides its own Makefile. To build and run an exercise:
 
-1. Change to the module folder (CPP_00 .. CPP_05):
+1. Change to the module folder (**CPP_00 .. CPP_09**):
 ```bash
 cd CPP_02
 ```
@@ -118,5 +137,3 @@ make clean
 # or
 make fclean
 ```
-
-
