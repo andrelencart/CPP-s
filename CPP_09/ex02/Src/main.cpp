@@ -11,7 +11,9 @@ int main(int ac, char **av){
 		Pm.DisplayOutput("Before");
 		Pm.SortVector();
 		Pm.SortDeque();
+		std::cout << std::endl;
 		Pm.DisplayOutput("After");
+		std::cout << std::endl;
 		Pm.DisplayTime();
 	}
 	catch (const std::exception &e){
