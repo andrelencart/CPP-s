@@ -142,7 +142,7 @@ int	parsing(char **av){
 			continue ;
 		float rate = FindExchangeRate(db, date);
 		if (rate < 0){
-			std::cerr << "Error: not in the database!" << std::endl;
+			std::cerr << "Error: " << date << " not in the database!" << std::endl;
 			continue ;
 		}
 		std::cout << date << " => " << value << " = " << (value * rate) << std::endl;
