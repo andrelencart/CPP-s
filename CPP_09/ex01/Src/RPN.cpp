@@ -26,26 +26,35 @@ std::string RPN::CalculateInput(std::string input){
 				_Stack.push(number);
 			}
 			else if (std::strchr("*+-/", token[0])){
-				if (_Stack.size() < 2)
-					return "Error";
+				if (_Stack.size() < 2){
+					std::cerr << "Error" << std::endl;
+					return "";
+				}
 				int n2 = _Stack.top(); _Stack.pop();
 				int n1 = _Stack.top(); _Stack.pop();
 				int result;
 				if (!CalculateOperators(n1, n2, token[0], result)){
 					if (token[0] == '/')
-						return "Error: division by zero";
-					return "Error";
+						std::cerr << "Error: division by zero" << std::endl;
+					else
+						std::cerr << "Error" << std::endl;
+					return "";
 				}
 				_Stack.push(result);
 			}
-			else
-				return "Error";
+			else{
+				std::cerr << "Error" << std::endl;
+				return "";
+			}
 		}
-		else
-			return "Error";
+		else{
+			std::cerr << "Error" << std::endl;
+			return "";
+		}
 	}
 	if (_Stack.size() != 1){
-		return "Error";
+		std::cerr << "Error" << std::endl;
+		return "";
 	}
 	int res = _Stack.top();
 	std::ostringstream oss;

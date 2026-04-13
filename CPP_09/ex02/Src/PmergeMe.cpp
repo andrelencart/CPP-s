@@ -66,49 +66,80 @@ void PmergeMe::DisplayOutput(std::string str){
 void PmergeMe::SortPairsByARecursiveVector(std::vector<std::pair<int, int> >& pairs){
 	if (pairs.size() <= 1)
 		return;
+	SortPairsByARecursiveVectorHelper(pairs, 0, pairs.size() - 1);
+}
 
-	size_t mid = pairs.size() / 2;
-	std::vector<std::pair<int, int> > left(pairs.begin(), pairs.begin() + mid);
-	std::vector<std::pair<int, int> > right(pairs.begin() + mid, pairs.end());
-	SortPairsByARecursiveVector(left);
-	SortPairsByARecursiveVector(right);
-	size_t i = 0;
-	size_t j = 0;
-	size_t k = 0;
-	while (i < left.size() && j < right.size()){
-		if (left[i].second <= right[j].second)
-			pairs[k++] = left[i++];
+void PmergeMe::SortPairsByARecursiveVectorHelper(std::vector<std::pair<int, int> >& pairs, size_t left, size_t right){
+	if (left >= right)
+		return;
+
+	size_t mid = left + (right - left) / 2;
+	SortPairsByARecursiveVectorHelper(pairs, left, mid);
+	SortPairsByARecursiveVectorHelper(pairs, mid + 1, right);
+	MergePairsVector(pairs, left, mid, right);
+}
+
+void PmergeMe::MergePairsVector(std::vector<std::pair<int, int> >& pairs, size_t left, size_t mid, size_t right){
+	std::vector<std::pair<int, int> > temp;
+	temp.reserve(right - left + 1);
+
+	size_t i = left;
+	size_t j = mid + 1;
+
+	while (i <= mid && j <= right){
+		if (pairs[i].second <= pairs[j].second)
+			temp.push_back(pairs[i++]);
 		else
-			pairs[k++] = right[j++];
+			temp.push_back(pairs[j++]);
 	}
-	while (i < left.size())
-		pairs[k++] = left[i++];
-	while (j < right.size())
-		pairs[k++] = right[j++];
+
+	while (i <= mid)
+		temp.push_back(pairs[i++]);
+
+	while (j <= right)
+		temp.push_back(pairs[j++]);
+
+	for (size_t k = 0; k < temp.size(); ++k)
+		pairs[left + k] = temp[k];
 }
 
 void PmergeMe::SortPairsByARecursiveDeque(std::deque<std::pair<int, int> >& pairs){
 	if (pairs.size() <= 1)
 		return;
+	SortPairsByARecursiveDequeHelper(pairs, 0, pairs.size() - 1);
+}
 
-	size_t mid = pairs.size() / 2;
-	std::deque<std::pair<int, int> > left(pairs.begin(), pairs.begin() + mid);
-	std::deque<std::pair<int, int> > right(pairs.begin() + mid, pairs.end());
-	SortPairsByARecursiveDeque(left);
-	SortPairsByARecursiveDeque(right);
-	size_t i = 0;
-	size_t j = 0;
-	size_t k = 0;
-	while (i < left.size() && j < right.size()){
-		if (left[i].second <= right[j].second)
-			pairs[k++] = left[i++];
+void PmergeMe::SortPairsByARecursiveDequeHelper(std::deque<std::pair<int, int> >& pairs, size_t left, size_t right){
+	if (left >= right)
+		return;
+
+	size_t mid = left + (right - left) / 2;
+	SortPairsByARecursiveDequeHelper(pairs, left, mid);
+	SortPairsByARecursiveDequeHelper(pairs, mid + 1, right);
+	MergePairsDeque(pairs, left, mid, right);
+}
+
+void PmergeMe::MergePairsDeque(std::deque<std::pair<int, int> >& pairs, size_t left, size_t mid, size_t right){
+	std::deque<std::pair<int, int> > temp;
+
+	size_t i = left;
+	size_t j = mid + 1;
+
+	while (i <= mid && j <= right){
+		if (pairs[i].second <= pairs[j].second)
+			temp.push_back(pairs[i++]);
 		else
-			pairs[k++] = right[j++];
+			temp.push_back(pairs[j++]);
 	}
-	while (i < left.size())
-		pairs[k++] = left[i++];
-	while (j < right.size())
-		pairs[k++] = right[j++];
+
+	while (i <= mid)
+		temp.push_back(pairs[i++]);
+
+	while (j <= right)
+		temp.push_back(pairs[j++]);
+
+	for (size_t k = 0; k < temp.size(); ++k)
+		pairs[left + k] = temp[k];
 }
 
 int PmergeMe::BinarySearchVectorBound(const std::vector<int>& vec, int value, size_t rightBound){
@@ -227,8 +258,10 @@ void PmergeMe::SortVector(){
 		size_t bound = mainChain.size() - 1;
 		if (boundValue != INT_MAX){
 			for (size_t bi = 0; bi < mainChain.size(); ++bi){
-				if (mainChain[bi] == boundValue)
-				bound = bi;
+				if (mainChain[bi] == boundValue){
+					bound = bi;
+					break;
+				}
 			}
 		}
 		int pos = BinarySearchVectorBound(mainChain, value, bound);
@@ -289,8 +322,10 @@ void PmergeMe::SortDeque(){
 		size_t bound = mainChain.size() - 1;
 		if (boundValue != INT_MAX){
 			for (size_t bi = 0; bi < mainChain.size(); ++bi){
-				if (mainChain[bi] == boundValue)
-				bound = bi;
+				if (mainChain[bi] == boundValue){
+					bound = bi;
+					break;
+				}
 			}
 		}
 		int pos = BinarySearchDequeBound(mainChain, value, bound);

@@ -22,8 +22,16 @@ class PmergeMe{
 		long IsNumberTooLong(const std::string &str);
 		int BinarySearchVectorBound(const std::vector<int>& vec, int value, size_t rightBound);
 		int BinarySearchDequeBound(const std::deque<int>& vec, int value, size_t rightBound);
+		
 		void SortPairsByARecursiveVector(std::vector<std::pair<int, int> >& pairs);
 		void SortPairsByARecursiveDeque(std::deque<std::pair<int, int> >& pairs);
+
+
+		void SortPairsByARecursiveVectorHelper(std::vector<std::pair<int, int> >& pairs, size_t left, size_t right);
+		void MergePairsVector(std::vector<std::pair<int, int> >& pairs, size_t left, size_t mid, size_t right);
+		
+		void SortPairsByARecursiveDequeHelper(std::deque<std::pair<int, int> >& pairs, size_t left, size_t right);
+		void MergePairsDeque(std::deque<std::pair<int, int> >& pairs, size_t left, size_t mid, size_t right);
 		std::vector<size_t> BuildJacobsthalOrder(size_t pendCount);
 
 	public:
