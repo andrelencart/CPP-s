@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
 # include <iostream>
 # include <iomanip>
@@ -46,3 +47,5 @@ class PmergeMe{
 		void SortDeque();
 		void DisplayTime();
 	};
+
+#endif
