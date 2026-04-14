@@ -210,12 +210,11 @@ std::vector<size_t> PmergeMe::BuildJacobsthalOrder(size_t pendCount){
 }
 
 void PmergeMe::SortVector(){
-	struct timeval start, end;
-	gettimeofday(&start, NULL);
+	clock_t start = std::clock();
 
 	if (_Vec.size() <= 1){
-		gettimeofday(&end, NULL);
-		_VecTime = (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
+		clock_t end = std::clock();
+		_VecTime = double(end - start) / CLOCKS_PER_SEC * 1000000.0;  // Convert to microseconds
 		return ;
 	}
 	std::vector<std::pair<int, int> > pairs;
@@ -269,17 +268,16 @@ void PmergeMe::SortVector(){
 	}
 	_Vec = mainChain;
 
-	gettimeofday(&end, NULL);
-	_VecTime = (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
+	clock_t end = std::clock();
+	_VecTime = double(end - start) / CLOCKS_PER_SEC * 1000000.0;
 }
 
 void PmergeMe::SortDeque(){
-	struct timeval start, end;
-	gettimeofday(&start, NULL);
+	clock_t start = std::clock();
 
 	if (_Deq.size() <= 1){
-		gettimeofday(&end, NULL);
-		_DeqTime = (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
+		clock_t end = std::clock();
+		_DeqTime = double(end - start) / CLOCKS_PER_SEC * 1000000.0;  // Convert to microseconds
 		return ;
 	}
 	std::deque<std::pair<int, int> > pairs;
@@ -333,8 +331,8 @@ void PmergeMe::SortDeque(){
 	}
 	_Deq = mainChain;
 
-	gettimeofday(&end, NULL);
-	_DeqTime = (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
+	clock_t end = std::clock();
+	_DeqTime = double(end - start) / CLOCKS_PER_SEC * 1000000.0;
 }
 
 void PmergeMe::DisplayTime(){

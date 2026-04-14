@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <cctype>
-#include <stdlib.h>
+#include <cstdlib>
 #include <fstream>
 #include <map>
 

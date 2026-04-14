@@ -6,7 +6,7 @@
 # include <exception>
 # include <climits>
 # include <cctype>
-# include <sys/time.h>
+# include <ctime>
 # include <cstdlib>
 # include <vector>
 # include <deque>
