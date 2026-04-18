@@ -134,7 +134,10 @@ int	parsing(char **av){
 		return 1;
 	}
 	std::string line;
-	std::getline(file, line);
+	if (!std::getline(file, line) || line != "date | value"){
+		std::cerr << "Error: invalid header format. Expected 'date | value'" << std::endl;
+		return 1;
+	}
 	while(std::getline(file, line)){
 		std::string date;
 		float value;
